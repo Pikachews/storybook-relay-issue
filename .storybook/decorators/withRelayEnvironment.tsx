@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeDecorator } from "@storybook/addons";
-import { ReactRelayContext } from "react-relay";
+import { RelayEnvironmentProvider } from "react-relay";
 import { createMockEnvironment } from "relay-test-utils";
 
 export default makeDecorator({
@@ -10,9 +10,9 @@ export default makeDecorator({
     const environment = createMockEnvironment();
 
     return (
-      <ReactRelayContext.Provider value={{ environment }}>
+      <RelayEnvironmentProvider environment={environment}>
         <>{storyFn(context)}</>
-      </ReactRelayContext.Provider>
+      </RelayEnvironmentProvider>
     );
   },
 });
